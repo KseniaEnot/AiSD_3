@@ -1,5 +1,5 @@
 #include "BinaryHeap.h"
-#include <stdlib.h>
+#include <iostream>
 
 //parent=(i - 1) / 2
 //left=2 * i + 1
@@ -35,10 +35,11 @@ void BinaryHeap::siftUp(int i) {
 
 void BinaryHeap::insert(int add)
 {
+    if (count+1 >= Maxcount) //проверка возможности добавления
+    {
+        
+    }
     count++;
-    if (count == Maxcount)
-        realloc(Heap, sizeof(int) * count * 2);
-    Maxcount = count * 2;
     Heap[count - 1] = add;
     siftUp(count - 1);
 }
@@ -58,10 +59,65 @@ void BinaryHeap::remove(int del) {
     while ((i < count) && (Heap[i] != del))// if contains
         i++;
     if (Heap[i] != del)
-        return; //error!!!!!
+        throw std::out_of_range("Element doesn't exist"); //error
     ToSwap = Heap[count-1];
     Heap[count - 1] = Heap[i];
     Heap[i] = ToSwap;
     siftDown(i);
     count--;
+}
+
+void BinaryHeap::printHeap() {
+    int maxinrow = 1;
+    for (size_t i = 0; i < count; i++)
+    {
+        std::cout << Heap[i] << " ";
+        if (i+1 == maxinrow)
+        {
+            std::cout << std::endl;
+            maxinrow = maxinrow*2+1;
+        }
+    }
+}
+
+Iterator BinaryHeap::create_bft_iterator() {
+    return bft_Iterator(0,count);
+}
+
+bool BinaryHeap::bft_Iterator::has_next() {
+    return current >= size;
+}
+
+int BinaryHeap::bft_Iterator::next() {
+    if (!has_next()) {
+        throw std::out_of_range("No more elements");
+    }
+    int temp = current;
+    current = current+1;
+    return temp;
+}
+
+Iterator BinaryHeap::create_dft_iterator() {
+    return dft_Iterator(0, count);
+}
+
+bool BinaryHeap::dft_Iterator::has_next() {
+    return Stack->at(Stack->get_size()-1)==0;
+}
+
+int BinaryHeap::dft_Iterator::next() {
+    if (!has_next()) {
+        throw std::out_of_range("No more elements");
+    }
+    int temp = current;
+    if (current*2+1 < size)
+    {
+        current = current * 2 + 1;
+    }else{
+        current = Stack->at(Stack->get_size() - 1);
+        Stack->pop_back();
+    }
+    if ((current + 1) * 2 < size)
+        Stack->push_back((current + 1) * 2);
+    return temp;
 }
