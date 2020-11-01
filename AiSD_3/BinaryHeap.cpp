@@ -94,7 +94,7 @@ Iterator* BinaryHeap::create_dft_iterator() {
 }
 
 bool BinaryHeap::dft_Iterator::has_next() {
-    return Stack->at(Stack->get_size() -1) != 0;
+    return (Stack->at(Stack->get_size() - 1) != 0)||((size<3)&&(Icurrent<size)&&(Icurrent>-1));
 }
 
 int BinaryHeap::dft_Iterator::next() {
@@ -102,14 +102,18 @@ int BinaryHeap::dft_Iterator::next() {
         throw std::out_of_range("No more elements");
     }
     int temp = current[Icurrent];
-    if ((Icurrent + 1) * 2 < size)  //add right branch
-        Stack->push_back((Icurrent + 1) * 2);
-    if (Icurrent*2+1 < size) //if haven't reached the end of the branch go down
-    {
-        Icurrent = Icurrent * 2 + 1;
-    }else{  //if reach the end of the branch go right
-        Icurrent = Stack->at(Stack->get_size() - 1);
-        Stack->pop_back();
+    if (size<3)
+        Icurrent++;
+    else{
+        if ((Icurrent + 1) * 2 < size)  //add right branch
+         Stack->push_back((Icurrent + 1) * 2);
+        if (Icurrent*2+1 < size) //if haven't reached the end of the branch go down
+     {
+         Icurrent = Icurrent * 2 + 1;
+        }else{  //if reach the end of the branch go right
+          Icurrent = Stack->at(Stack->get_size() - 1);
+         Stack->pop_back();
+     }
     }
     return temp;
 }
