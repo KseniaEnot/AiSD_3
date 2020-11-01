@@ -1,6 +1,6 @@
 #pragma once
-#include <iostream>
-#include <stdlib.h>
+#include "Iterator.h"
+#include "dualList.h"
 
 class BinaryHeap
 {
@@ -10,10 +10,10 @@ private:
 	int* Heap; //array for heap
     
 public:
-	BinaryHeap(int* Heap, int Maxcount = 1, int count = 0) {
+	BinaryHeap(int* Heap=nullptr, int Maxcount = 10000, int count = 0) {
 		this->count = count;
 		this->Maxcount = Maxcount;
-		this->Heap = (int*)malloc(sizeof(int)*Maxcount);
+		this->Heap = new int[Maxcount];
     };
 
     void siftDown(int);
@@ -21,7 +21,6 @@ public:
 	bool contains(int); // поиск элемента в дереве по ключу
 	void insert(int); // добавление элемента в дерево по ключу
 	void remove(int); // удаление элемента дерева по ключу
-<<<<<<< HEAD
 	void printHeap();
 	Iterator create_dft_iterator(); // создание итератора, реализующего один из методов обхода в глубину (depth-first traverse)
 	Iterator create_bft_iterator(); // создание итератора, реализующего методы обхода в ширину (breadth-first traverse)
@@ -29,9 +28,8 @@ public:
 	class dft_Iterator : public Iterator // depth-first traverse
 	{
 	public:
-		dft_Iterator(int start,int* H, int max) {
+		dft_Iterator(int start, int max) {
 			size = max;
-			Heapitr = H;
 			current = start;
 			Stack->push_back(start);
 			if ((current + 1) * 2 < size)
@@ -41,19 +39,17 @@ public:
 		bool has_next();
 
 	private:
-		dualList* Stack = new dualList();
+		dualList* Stack = new dualList();\
 		int current;
 		int size;
-		int* Heapitr;
 	};
 
 
 	class bft_Iterator : public Iterator //breadth-first traverse
 	{
 		public:
-			bft_Iterator(int start, int* H, int max) {
+			bft_Iterator(int start,int max) {
 				current = start;
-				Heapitr = H;
 				size = max;
 			};
 			int next();
@@ -62,16 +58,10 @@ public:
 		private:
 			int current;
 			int size;
-			int* Heapitr;
 	};
-=======
-	//Iterator create_dft_iterator(); // создание итератора, реализующего один из методов обхода в глубину (depth-first traverse)
-	//Iterator create_bft_iterator() // создание итератора, реализующего методы обхода в ширину (breadth-first traverse)
-	//¬џ¬ќƒ»“№  ”„” ѕќЋќ—ќ„ јћ»!
->>>>>>> parent of 93a709a... Second try
 
 	~BinaryHeap() {
-		//delete Heap;
+		delete Heap; //Error!
 	};
 };
 
