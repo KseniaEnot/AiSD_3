@@ -1,0 +1,4 @@
+﻿  lab3_test.cpp
+     Создается библиотека C:\Users\Ксения\Documents\универ дз\3 сем\ALGORITMI\lab3\AiSD_3\AiSD_3\Debug\lab3_test.lib и объект C:\Users\Ксения\Documents\универ дз\3 сем\ALGORITMI\lab3\AiSD_3\AiSD_3\Debug\lab3_test.exp
+lab3_test.obj : error LNK2019: ссылка на неразрешенный внешний символ "public: int __thiscall Iterator::next(void)" (?next@Iterator@@QAEHXZ) в функции "public: void __thiscall lab3test::lab3test::TestHeapInsert(void)" (?TestHeapInsert@lab3test@1@QAEXXZ)
+C:\Users\Ксения\Documents\универ дз\3 сем\ALGORITMI\lab3\AiSD_3\AiSD_3\Debug\lab3_test.dll : fatal error LNK1120: неразрешенных внешних элементов: 1

@@ -37,7 +37,7 @@ void BinaryHeap::insert(int add)
 {
     if (count+1 >= Maxcount) //проверка возможности добавления
     {
-        
+        throw std::out_of_range("Array overflow");
     }
     count++;
     Heap[count - 1] = add;
@@ -81,7 +81,7 @@ void BinaryHeap::printHeap() {
 }
 
 Iterator BinaryHeap::create_bft_iterator() {
-    return bft_Iterator(0,count);
+    return bft_Iterator(0, Heap, count);
 }
 
 bool BinaryHeap::bft_Iterator::has_next() {
@@ -92,13 +92,13 @@ int BinaryHeap::bft_Iterator::next() {
     if (!has_next()) {
         throw std::out_of_range("No more elements");
     }
-    int temp = current;
+    int temp =Heapitr[current];
     current = current+1;
     return temp;
 }
 
 Iterator BinaryHeap::create_dft_iterator() {
-    return dft_Iterator(0, count);
+    return dft_Iterator(0, Heap, count);
 }
 
 bool BinaryHeap::dft_Iterator::has_next() {
@@ -109,7 +109,7 @@ int BinaryHeap::dft_Iterator::next() {
     if (!has_next()) {
         throw std::out_of_range("No more elements");
     }
-    int temp = current;
+    int temp = Heapitr[current];
     if (current*2+1 < size)
     {
         current = current * 2 + 1;

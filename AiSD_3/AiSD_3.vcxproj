@@ -149,9 +149,11 @@
   <ItemGroup>
     <ClCompile Include="AiSD_3.cpp" />
     <ClCompile Include="BinaryHeap.cpp" />
+    <ClCompile Include="dualList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinaryHeap.h" />
+    <ClInclude Include="dualList.h" />
     <ClInclude Include="Iterator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -28,8 +28,9 @@ public:
 	class dft_Iterator : public Iterator // depth-first traverse
 	{
 	public:
-		dft_Iterator(int start, int max) {
+		dft_Iterator(int start,int* H, int max) {
 			size = max;
+			Heapitr = H;
 			current = start;
 			Stack->push_back(start);
 			if ((current + 1) * 2 < size)
@@ -39,17 +40,19 @@ public:
 		bool has_next();
 
 	private:
-		dualList* Stack = new dualList();\
+		dualList* Stack = new dualList();
 		int current;
 		int size;
+		int* Heapitr;
 	};
 
 
 	class bft_Iterator : public Iterator //breadth-first traverse
 	{
 		public:
-			bft_Iterator(int start,int max) {
+			bft_Iterator(int start, int* H, int max) {
 				current = start;
+				Heapitr = H;
 				size = max;
 			};
 			int next();
@@ -58,10 +61,11 @@ public:
 		private:
 			int current;
 			int size;
+			int* Heapitr;
 	};
 
 	~BinaryHeap() {
-		delete Heap;
+		//delete Heap;
 	};
 };
 

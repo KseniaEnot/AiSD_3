@@ -1,6 +1,4 @@
 ﻿  AiSD_3.cpp
-  BinaryHeap.cpp
-C:\Users\Ксения\Documents\универ дз\3 сем\ALGORITMI\lab3\AiSD_3\AiSD_3\AiSD_3\BinaryHeap.cpp(49,16): warning C4101: ToSwap: неиспользованная локальная переменная
-C:\Users\Ксения\Documents\универ дз\3 сем\ALGORITMI\lab3\AiSD_3\AiSD_3\AiSD_3\BinaryHeap.cpp(73,26): warning C4018: <: несоответствие типов со знаком и без знака
-  Создание кода...
-  AiSD_3.vcxproj -> C:\Users\Ксения\Documents\универ дз\3 сем\ALGORITMI\lab3\AiSD_3\AiSD_3\Debug\AiSD_3.exe
+AiSD_3.obj : error LNK2019: ссылка на неразрешенный внешний символ "public: int __thiscall Iterator::next(void)" (?next@Iterator@@QAEHXZ) в функции _main
+AiSD_3.obj : error LNK2019: ссылка на неразрешенный внешний символ "public: bool __thiscall Iterator::has_next(void)" (?has_next@Iterator@@QAE_NXZ) в функции _main
+C:\Users\Ксения\Documents\универ дз\3 сем\ALGORITMI\lab3\AiSD_3\AiSD_3\Debug\AiSD_3.exe : fatal error LNK1120: неразрешенных внешних элементов: 2
