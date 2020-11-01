@@ -80,29 +80,29 @@ void BinaryHeap::printHeap() {
     }
 }
 
-Iterator BinaryHeap::create_bft_iterator() {
-    return bft_Iterator(0,count);
+Iterator* BinaryHeap::create_bft_iterator() {
+    return new bft_Iterator(Heap,count);
 }
 
 bool BinaryHeap::bft_Iterator::has_next() {
-    return current >= size;
+    return Icurrent < size;
 }
 
 int BinaryHeap::bft_Iterator::next() {
     if (!has_next()) {
         throw std::out_of_range("No more elements");
     }
-    int temp = current;
-    current = current+1;
+    int temp = current[Icurrent];
+    Icurrent++;
     return temp;
 }
-
-Iterator BinaryHeap::create_dft_iterator() {
-    return dft_Iterator(0, count);
+/*
+Iterator* BinaryHeap::create_dft_iterator() {
+    return &dft_Iterator(0, count);
 }
 
 bool BinaryHeap::dft_Iterator::has_next() {
-    return Stack->at(Stack->get_size()-1)==0;
+    return Stack->at(Stack->get_size()-1)!=0;
 }
 
 int BinaryHeap::dft_Iterator::next() {
@@ -120,4 +120,4 @@ int BinaryHeap::dft_Iterator::next() {
     if ((current + 1) * 2 < size)
         Stack->push_back((current + 1) * 2);
     return temp;
-}
+}*/

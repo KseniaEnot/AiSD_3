@@ -2,7 +2,6 @@
 class Iterator
 {
 public:
-	int next();
-	bool has_next();
+	virtual int next() = 0;
+	virtual bool has_next() = 0;
 };
-

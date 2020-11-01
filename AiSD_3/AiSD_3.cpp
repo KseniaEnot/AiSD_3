@@ -11,16 +11,13 @@ int main()
 		h.insert(in);
 		std::cin >> in;
 	}
-	std::cout << std::endl;
 	h.printHeap();
 	std::cout << std::endl;
+	Iterator* h_iterator = h.create_bft_iterator();
+	while (h_iterator->has_next())
+	{
+		std::cout << h_iterator->next() << " ";
+	}
 	std::cin >> in;
-	h.remove(in);
-	h.printHeap();
-	std::cout << std::endl;
-	std::cin >> in;
-	h.insert(in);
-	h.printHeap();
-	std::cout << std::endl;
 }
 
