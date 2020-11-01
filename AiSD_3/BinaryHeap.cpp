@@ -1,5 +1,5 @@
 #include "BinaryHeap.h"
-#include <iostream>
+#include <stdlib.h>
 
 //parent=(i - 1) / 2
 //left=2 * i + 1
@@ -35,11 +35,17 @@ void BinaryHeap::siftUp(int i) {
 
 void BinaryHeap::insert(int add)
 {
+<<<<<<< HEAD
     if (count+1 >= Maxcount) //проверка возможности добавления
     {
         throw std::out_of_range("Array overflow");
     }
+=======
+>>>>>>> parent of 93a709a... Second try
     count++;
+    if (count == Maxcount)
+        realloc(Heap, sizeof(int) * count * 2);
+    Maxcount = count * 2;
     Heap[count - 1] = add;
     siftUp(count - 1);
 }
@@ -59,12 +65,13 @@ void BinaryHeap::remove(int del) {
     while ((i < count) && (Heap[i] != del))// if contains
         i++;
     if (Heap[i] != del)
-        throw std::out_of_range("Element doesn't exist"); //error
+        return; //error!!!!!
     ToSwap = Heap[count-1];
     Heap[count - 1] = Heap[i];
     Heap[i] = ToSwap;
     siftDown(i);
     count--;
+<<<<<<< HEAD
 }
 
 void BinaryHeap::printHeap() {
@@ -120,4 +127,6 @@ int BinaryHeap::dft_Iterator::next() {
     if ((current + 1) * 2 < size)
         Stack->push_back((current + 1) * 2);
     return temp;
+=======
+>>>>>>> parent of 93a709a... Second try
 }

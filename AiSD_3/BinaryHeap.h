@@ -1,6 +1,6 @@
 #pragma once
-#include "Iterator.h"
-#include "dualList.h"
+#include <iostream>
+#include <stdlib.h>
 
 class BinaryHeap
 {
@@ -10,10 +10,10 @@ private:
 	int* Heap; //array for heap
     
 public:
-	BinaryHeap(int* Heap=nullptr, int Maxcount = 10000, int count = 0) {
+	BinaryHeap(int* Heap, int Maxcount = 1, int count = 0) {
 		this->count = count;
 		this->Maxcount = Maxcount;
-		this->Heap = new int[Maxcount];
+		this->Heap = (int*)malloc(sizeof(int)*Maxcount);
     };
 
     void siftDown(int);
@@ -21,6 +21,7 @@ public:
 	bool contains(int); // поиск элемента в дереве по ключу
 	void insert(int); // добавление элемента в дерево по ключу
 	void remove(int); // удаление элемента дерева по ключу
+<<<<<<< HEAD
 	void printHeap();
 	Iterator create_dft_iterator(); // создание итератора, реализующего один из методов обхода в глубину (depth-first traverse)
 	Iterator create_bft_iterator(); // создание итератора, реализующего методы обхода в ширину (breadth-first traverse)
@@ -63,6 +64,11 @@ public:
 			int size;
 			int* Heapitr;
 	};
+=======
+	//Iterator create_dft_iterator(); // создание итератора, реализующего один из методов обхода в глубину (depth-first traverse)
+	//Iterator create_bft_iterator() // создание итератора, реализующего методы обхода в ширину (breadth-first traverse)
+	//¬џ¬ќƒ»“№  ”„” ѕќЋќ—ќ„ јћ»!
+>>>>>>> parent of 93a709a... Second try
 
 	~BinaryHeap() {
 		//delete Heap;

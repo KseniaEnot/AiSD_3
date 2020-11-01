@@ -1,8 +1,8 @@
 ﻿#include <iostream>
-#include "BinaryHeap.h"
 
 int main()
 {
+<<<<<<< HEAD
     int in;
 	BinaryHeap h=BinaryHeap();
 	
@@ -17,5 +17,8 @@ int main()
 	{
 		dftit.next();
 	}
+=======
+    std::cout << "Hello World!\n";
+>>>>>>> parent of 93a709a... Second try
 }
 

@@ -153,8 +153,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinaryHeap.h" />
+<<<<<<< HEAD
     <ClInclude Include="dualList.h" />
     <ClInclude Include="Iterator.h" />
+=======
+>>>>>>> parent of 93a709a... Second try
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
