@@ -24,20 +24,21 @@ void BinaryHeap::siftDown(int i) {
 }
 void BinaryHeap::siftUp(int i) {
     int ToSwap;
-    while (Heap[i]<Heap[(i-1)/2])
+    while (Heap[i]<Heap[(i-1)/2]) //while the parent is more
     {
         ToSwap = Heap[(i - 1) / 2];
         Heap[(i - 1) / 2] = Heap[i];
         Heap[i] = ToSwap;
-        i = (i - 1) / 2;
+        i = (i - 1) / 2; //go to parent
     }
 }
 
 void BinaryHeap::insert(int add)
 {
-    if (count+1 >= Maxcount) //проверка возможности добавления
+    if (count+1 >= Maxcount) //if cann't add
     {
-        
+        throw std::out_of_range("Array overflow");
+        return;
     }
     count++;
     Heap[count - 1] = add;
@@ -46,8 +47,9 @@ void BinaryHeap::insert(int add)
 
 bool BinaryHeap::contains(int find) {
     int i = 0, ToSwap;;
-    while ((i < count) && (Heap[i] != find))
+    while ((i < count) && (Heap[i] != find)) {
         i++;
+    }
     if (Heap[i] != find)
         return false; //if not found
     else
@@ -58,26 +60,15 @@ void BinaryHeap::remove(int del) {
     int ToSwap,i = 0;
     while ((i < count) && (Heap[i] != del))// if contains
         i++;
-    if (Heap[i] != del)
+    if (Heap[i] != del) {
         throw std::out_of_range("Element doesn't exist"); //error
+        return;
+    }
     ToSwap = Heap[count-1];
     Heap[count - 1] = Heap[i];
     Heap[i] = ToSwap;
-    siftDown(i);
     count--;
-}
-
-void BinaryHeap::printHeap() {
-    int maxinrow = 1;
-    for (size_t i = 0; i < count; i++)
-    {
-        std::cout << Heap[i] << " ";
-        if (i+1 == maxinrow)
-        {
-            std::cout << std::endl;
-            maxinrow = maxinrow*2+1;
-        }
-    }
+    siftDown(i);
 }
 
 Iterator* BinaryHeap::create_bft_iterator() {
@@ -96,28 +87,29 @@ int BinaryHeap::bft_Iterator::next() {
     Icurrent++;
     return temp;
 }
-/*
+
+
 Iterator* BinaryHeap::create_dft_iterator() {
-    return &dft_Iterator(0, count);
+    return new dft_Iterator(Heap, count);
 }
 
 bool BinaryHeap::dft_Iterator::has_next() {
-    return Stack->at(Stack->get_size()-1)!=0;
+    return Stack->at(Stack->get_size() -1) != 0;
 }
 
 int BinaryHeap::dft_Iterator::next() {
     if (!has_next()) {
         throw std::out_of_range("No more elements");
     }
-    int temp = current;
-    if (current*2+1 < size)
+    int temp = current[Icurrent];
+    if ((Icurrent + 1) * 2 < size)  //add right branch
+        Stack->push_back((Icurrent + 1) * 2);
+    if (Icurrent*2+1 < size) //if haven't reached the end of the branch go down
     {
-        current = current * 2 + 1;
-    }else{
-        current = Stack->at(Stack->get_size() - 1);
+        Icurrent = Icurrent * 2 + 1;
+    }else{  //if reach the end of the branch go right
+        Icurrent = Stack->at(Stack->get_size() - 1);
         Stack->pop_back();
     }
-    if ((current + 1) * 2 < size)
-        Stack->push_back((current + 1) * 2);
     return temp;
-}*/
+}

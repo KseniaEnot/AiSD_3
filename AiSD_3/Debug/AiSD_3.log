@@ -1,6 +1,6 @@
 ﻿  AiSD_3.cpp
   BinaryHeap.cpp
-C:\Users\Ксения\Documents\универ дз\3 сем\ALGORITMI\lab3\AiSD_3\AiSD_3\AiSD_3\BinaryHeap.cpp(48,16): warning C4101: ToSwap: неиспользованная локальная переменная
-C:\Users\Ксения\Documents\универ дз\3 сем\ALGORITMI\lab3\AiSD_3\AiSD_3\AiSD_3\BinaryHeap.cpp(72,26): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Ксения\Documents\универ дз\3 сем\ALGORITMI\lab3\AiSD_3\AiSD_3\AiSD_3\BinaryHeap.cpp(49,16): warning C4101: ToSwap: неиспользованная локальная переменная
+  dualList.cpp
   Создание кода...
-  AiSD_3.vcxproj -> C:\Users\Ксения\Documents\универ дз\3 сем\ALGORITMI\lab3\AiSD_3\AiSD_3\Debug\AiSD_3.exe
+  AiSD_3.vcxproj -> C:\Users\Ксения\Documents\универ дз\3 сем\ALGORITMI\lab3\AiSD_3\AiSD_3\Debug\AiSD_3.lib

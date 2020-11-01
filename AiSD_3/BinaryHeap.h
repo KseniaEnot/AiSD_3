@@ -18,31 +18,37 @@ public:
 
     void siftDown(int);
 	void siftUp(int);
-	bool contains(int); // поиск элемента в дереве по ключу
-	void insert(int); // добавление элемента в дерево по ключу
-	void remove(int); // удаление элемента дерева по ключу
-	void printHeap();
-	Iterator create_dft_iterator(); // создание итератора, реализующего один из методов обхода в глубину (depth-first traverse)
-	Iterator* create_bft_iterator(); // создание итератора, реализующего методы обхода в ширину (breadth-first traverse)
+	bool contains(int); // search for an element in the heap by key
+	void insert(int); // add an item to the heap by key
+	void remove(int); // delete an item to the heap by key
+	Iterator* create_dft_iterator(); // depth-first traverse iterator
+	Iterator* create_bft_iterator(); // breadth-first traverse iterator
 
-	/*class dft_Iterator : public Iterator // depth-first traverse
+	class dft_Iterator : public Iterator // depth-first traverse
 	{
 	public:
-		dft_Iterator(int start, int max) {
+		dft_Iterator(int* start, int max) {
+			Stack = new dualList();
 			size = max;
 			current = start;
-			Stack->push_back(start);
-			if ((current + 1) * 2 < size)
-				Stack->push_back((current + 1) * 2);
+			Icurrent = 0;
+			Stack->push_back(Icurrent);
+			if ((Icurrent + 1) * 2 < size) //add right branch
+				Stack->push_back((Icurrent + 1) * 2);
 		};
-		int next() override;
-		bool has_next() override;
+		int next();
+		bool has_next();
+		~dft_Iterator() {
+			delete Stack;
+			delete current;
+		}
 
 	private:
-		dualList* Stack = new dualList();
-		int current;
+		dualList* Stack;
+		int* current;
+		int Icurrent;
 		int size;
-	};*/
+	};
 
 	
 	class bft_Iterator : public Iterator //breadth-first traverse
@@ -55,6 +61,9 @@ public:
 			};
 			int next();
 			bool has_next();
+			~bft_Iterator() {
+				delete current;
+			}
 
 		private:
 			int* current;
@@ -63,7 +72,7 @@ public:
 	};
 
 	~BinaryHeap() {
-		delete Heap; //Error!
+		delete Heap;
 	};
 };
 

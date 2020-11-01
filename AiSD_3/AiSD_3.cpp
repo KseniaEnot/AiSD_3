@@ -11,13 +11,19 @@ int main()
 		h.insert(in);
 		std::cin >> in;
 	}
-	h.printHeap();
 	std::cout << std::endl;
-	Iterator* h_iterator = h.create_bft_iterator();
-	while (h_iterator->has_next())
+	std::cout <<"BFT:"<< std::endl;
+	Iterator* h_bft_iterator = h.create_bft_iterator();
+	while (h_bft_iterator->has_next())
 	{
-		std::cout << h_iterator->next() << " ";
+		std::cout << h_bft_iterator->next() << " ";
 	}
-	std::cin >> in;
+	std::cout << std::endl;
+	std::cout << "DFT:" << std::endl;
+	Iterator* h_dft_iterator = h.create_dft_iterator();
+	while (h_dft_iterator->has_next())
+	{
+		std::cout << h_dft_iterator->next() << " ";
+	}
 }
 
