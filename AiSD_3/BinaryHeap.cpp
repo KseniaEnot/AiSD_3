@@ -1,5 +1,6 @@
 #include "BinaryHeap.h"
 #include <iostream>
+#include <stdlib.h>
 
 //parent=(i - 1) / 2
 //left=2 * i + 1
@@ -37,8 +38,16 @@ void BinaryHeap::insert(int add)
 {
     if (count+1 >= Maxcount) //if cann't add
     {
-        throw std::out_of_range("Array overflow");
-        return;
+        int* p;
+        p = (int*)realloc(Heap, (Maxcount * 2 + 1)*sizeof(int));
+        if (!p) {
+            throw std::out_of_range("Allocation error");
+            return;
+        }
+        else {
+            Heap = p;
+            Maxcount = Maxcount * 2 + 1;
+        }
     }
     count++;
     Heap[count - 1] = add;

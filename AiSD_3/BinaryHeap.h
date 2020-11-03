@@ -1,4 +1,5 @@
 #pragma once
+#include <stdlib.h>
 #include "Iterator.h"
 #include "dualList.h"
 
@@ -10,10 +11,10 @@ private:
 	int* Heap; //array for heap
     
 public:
-	BinaryHeap(int* Heap=nullptr, int Maxcount = 10000, int count = 0) {
+	BinaryHeap(int* Heap=nullptr, int Maxcount = 1, int count = 0) {
 		this->count = count;
 		this->Maxcount = Maxcount;
-		this->Heap = new int[Maxcount];
+		this->Heap = (int*)malloc(sizeof(int)*Maxcount);
     };
 
     void siftDown(int);
@@ -72,7 +73,7 @@ public:
 	};
 
 	~BinaryHeap() {
-		delete Heap;
+		free(this->Heap);
 	};
 };
 
